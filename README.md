@@ -12,3 +12,5 @@ util当中最重要的类：
 1. FiltUtil
 1. StringUtil
 1. ValidUtil
+
+使用Gradle作为ALM工具
