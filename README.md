@@ -3,5 +3,5 @@
 - com.zscp.master.util为基础包
 - com.zscp.master.util.bean为字节操作包
 - com.zscp.master.util.collction为集合操作包
-- com.zscp.master.util。encrypt为基础包
+- com.zscp.master.util.encrypt为加密操作包
 - com.zscp.master.util.image为图像包
