@@ -143,7 +143,7 @@ public class DateUtils {
      * @return long 时间戳
      */
     public static long dateToUnixTimestamp() {
-        long timestamp = new Date().getTime();
+        long timestamp = System.currentTimeMillis();
         return timestamp;
     }
 
@@ -169,8 +169,9 @@ public class DateUtils {
      * @return 格式化后的日期
      */
     public static String formatDate(Date date) {
-        if (date == null)
+        if (date == null) {
             date = now();
+        }
         return (formatDate(date, "yyyy-MM-dd"));
     }
 
@@ -181,8 +182,9 @@ public class DateUtils {
      * @return 格式化后的日期
      */
     public static String formatDateTime(Date date) {
-        if (date == null)
+        if (date == null) {
             date = now();
+        }
         return (formatDate(date, "yyyy-MM-dd HH:mm:ss"));
     }
 
@@ -193,8 +195,9 @@ public class DateUtils {
      * @return 格式化后的日期
      */
     public static String formatTime(Date date) {
-        if (date == null)
+        if (date == null) {
             date = now();
+        }
         return (formatDate(date, "HH:mm:ss"));
     }
 
@@ -206,10 +209,12 @@ public class DateUtils {
      * @return 时间格式字符串
      */
     public static String formatDate(Date date, String pattern) {
-        if (date == null)
+        if (date == null) {
             date = now();
-        if (pattern == null)
+        }
+        if (pattern == null) {
             pattern = "yyyy-MM-dd";
+        }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         return (sdf.format(date));
     }
@@ -223,8 +228,9 @@ public class DateUtils {
      * @return 格式化后的日期
      */
     public static Date parseDate(String date) {
-        if (date == null)
+        if (date == null) {
             return now();
+        }
         return parseDate(date, "yyyy-MM-dd");
     }
 
@@ -235,8 +241,9 @@ public class DateUtils {
      * @return 格式化后的日期
      */
     public static Date parseDateTime(String datetime) {
-        if (datetime == null)
+        if (datetime == null) {
             return now();
+        }
         return parseDate(datetime, "yyyy-MM-dd HH:mm:ss");
     }
 
@@ -247,8 +254,9 @@ public class DateUtils {
      * @return 截断后的时间
      */
     public static Date parseDate(Date datetime) {
-        if (datetime == null)
+        if (datetime == null) {
             return now();
+        }
         return parseDate(datetime, "yyyy-MM-dd");
     }
 
@@ -259,8 +267,9 @@ public class DateUtils {
      * @return 截断后的时间
      */
     public static Date parseDateTime(Date datetime) {
-        if (datetime == null)
+        if (datetime == null) {
             return now();
+        }
         return parseDate(datetime, "yyyy-MM-dd  HH:mm:ss");
     }
 
@@ -272,8 +281,9 @@ public class DateUtils {
      * @return 转换后的日期
      */
     public static Date parseDate(Date datetime, String pattern) {
-        if (datetime == null)
+        if (datetime == null) {
             return now();
+        }
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
         try {
             return formatter.parse(formatter.format(datetime));
@@ -292,7 +302,7 @@ public class DateUtils {
     public static Date parseDate(String date, String pattern) {
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
 
-        if ((date == null) || (date.equals(""))) {
+        if ((date == null) || ("".equals(date))) {
             return now();
         } else {
             try {
@@ -375,8 +385,9 @@ public class DateUtils {
      * @return 计算后的日期
      */
     public static Date add(Date date, int field, int amount) {
-        if (date == null)
+        if (date == null) {
             date = now();
+        }
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

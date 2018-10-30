@@ -39,7 +39,9 @@ public class HttpUtil {
      * @throws UnsupportedEncodingException 编码异常
      */
     public static String encode(String content, String charsetStr) throws UnsupportedEncodingException {
-        if (ValidUtil.isEmpty(content)) return content;
+        if (ValidUtil.isEmpty(content)) {
+            return content;
+        }
 
         String encodeContent = null;
         try {
@@ -71,7 +73,9 @@ public class HttpUtil {
      * @throws UnsupportedEncodingException 解码异常
      */
     public static String decode(String content, String charsetStr) throws UnsupportedEncodingException {
-        if (ValidUtil.isEmpty(content)) return content;
+        if (ValidUtil.isEmpty(content)) {
+            return content;
+        }
         String encodeContnt = null;
         try {
             encodeContnt = URLDecoder.decode(content, charsetStr);
@@ -132,8 +136,9 @@ public class HttpUtil {
                 conn.setRequestProperty(headKey, headers.get(headKey));
             }
             OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream(), DEFAULT_ENCODING);
-            if (data == null)
+            if (data == null) {
                 data = "";
+            }
             writer.write(data);
             writer.flush();
             writer.close();
@@ -150,8 +155,9 @@ public class HttpUtil {
             throw e;
         } finally {
             try {
-                if (reader != null)
+                if (reader != null) {
                     reader.close();
+                }
             } catch (IOException e) {
                 throw e;
             }
@@ -196,13 +202,15 @@ public class HttpUtil {
             e.printStackTrace();
         } finally {
             try {
-                if (is != null)
+                if (is != null) {
                     is.close();
+                }
             } catch (IOException e) {
             }
             try {
-                if (baos != null)
+                if (baos != null) {
                     baos.close();
+                }
             } catch (IOException e) {
             }
             conn.disconnect();

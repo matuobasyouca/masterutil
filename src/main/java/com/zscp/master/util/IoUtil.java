@@ -532,7 +532,9 @@ public class IoUtil {
      * @param closeable 被关闭的对象
      */
     public static void close(Closeable closeable) {
-        if (closeable == null) return;
+        if (closeable == null) {
+            return;
+        }
         try {
             closeable.close();
         } catch (Exception e) {
@@ -546,7 +548,9 @@ public class IoUtil {
      * @since 1.7
      */
     public static void close(AutoCloseable closeable) {
-        if (closeable == null) return;
+        if (closeable == null) {
+            return;
+        }
         try {
             closeable.close();
         } catch (Exception e) {

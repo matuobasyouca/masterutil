@@ -150,7 +150,7 @@ public final class RandomUtil {
      * @return uuid
      */
     public static String squid() {
-        Long date = new Date().getTime();
+        Long date = System.currentTimeMillis();
         String s = UUID.randomUUID().toString();
         String str = Long.toHexString(date);
         String result = str + s.substring(17, 18) + s.substring(19, 23) + s.substring(24);
