@@ -958,8 +958,9 @@ public final class ImageUtil {
      * @return 是否成功
      */
     public static boolean generateImage(String imgStr, String path) {
-        if (imgStr == null)
+        if (imgStr == null) {
             return false;
+        }
         try {
             // 解密
             byte[] b = Base64.getDecoder().decode(imgStr);

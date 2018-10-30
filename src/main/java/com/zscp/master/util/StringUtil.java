@@ -857,7 +857,9 @@ public final class StringUtil {
             }
             if (Character.isUpperCase(c)) {
                 if (!isPreUpperCase || !isNextUpperCase) {
-                    if (i > 0) sb.append(UNDERLINE);
+                    if (i > 0) {
+                        sb.append(UNDERLINE);
+                    }
                 }
                 isPreUpperCase = true;
             } else {
@@ -897,8 +899,9 @@ public final class StringUtil {
                 }
             }
             return sb.toString();
-        } else
+        } else {
             return name;
+        }
     }
 
     /**
@@ -1035,7 +1038,8 @@ public final class StringUtil {
      * @return 个数
      */
     public final static int ChineseLength(String str) {
-        Pattern p = Pattern.compile("[\u4E00-\u9FA5]+");
+        final String regex = "[\u4E00-\u9FA5]+";
+        Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(str);
         int i = 0;
         while (m.find()) {
@@ -1050,7 +1054,7 @@ public final class StringUtil {
      * @param buf 2进制byte
      * @return 16进制字符串
      */
-    public static String parseByte2HexStr(byte buf[]) {
+    public static String parseByte2HexStr(byte[] buf) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < buf.length; i++) {
             String hex = Integer.toHexString(buf[i] & 0xFF);
@@ -1067,8 +1071,9 @@ public final class StringUtil {
      * @return 2进制byte[]
      */
     public static byte[] parseHexStr2Byte(String hexStr) {
-        if (hexStr.length() < 1)
+        if (hexStr.length() < 1) {
             return null;
+        }
         byte[] result = new byte[hexStr.length()/2];
         for (int i = 0;i< hexStr.length()/2; i++) {
             int high = Integer.parseInt(hexStr.substring(i*2, i*2+1), 16);

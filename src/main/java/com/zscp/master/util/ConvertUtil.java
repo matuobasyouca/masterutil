@@ -19,9 +19,9 @@ public final class ConvertUtil {
      * @return 中文大写数字
      */
     public static String digitUppercase(double n) {
-        String fraction[] = {"角", "分"};
-        String digit[] = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
-        String unit[][] = {{"元", "万", "亿"}, {"", "拾", "佰", "仟"}};
+        String[] fraction = {"角", "分"};
+        String[] digit = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
+        String[][] unit = {{"元", "万", "亿"}, {"", "拾", "佰", "仟"}};
 
         String head = n < 0 ? "负" : "";
         n = Math.abs(n);
@@ -88,7 +88,7 @@ public final class ConvertUtil {
      * @return 替换后的字符
      */
     public static String toDBC(String text, Set<Character> notConvertSet) {
-        char c[] = text.toCharArray();
+        char[] c = text.toCharArray();
         for (int i = 0; i < c.length; i++) {
             if (null != notConvertSet && notConvertSet.contains(c[i])) {
                 // 跳过不替换的字符
@@ -134,7 +134,7 @@ public final class ConvertUtil {
      * @return 全角字符串.
      */
     public static String toSBC(String input, Set<Character> notConvertSet) {
-        char c[] = input.toCharArray();
+        char[] c = input.toCharArray();
         for (int i = 0; i < c.length; i++) {
             if (null != notConvertSet && notConvertSet.contains(c[i])) {
                 // 跳过不替换的字符
@@ -157,7 +157,9 @@ public final class ConvertUtil {
      * @return 返回Integer
      */
     public static Integer toInteger(Object o){
-        if(o==null) return null;
+        if(o==null) {
+            return null;
+        }
         if(ValidUtil.isNumber(o.toString())){
             return Integer.valueOf(o.toString());
         }else{

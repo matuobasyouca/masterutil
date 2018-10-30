@@ -392,7 +392,8 @@ public final class ValidUtil {
     public final static boolean isABC(String src) {
         boolean return_value = false;
         if (src != null && src.length() > 0) {
-            Matcher m = Pattern.compile("^[a-z|A-Z]+$").matcher(src);
+            final String regex = "^[a-z|A-Z]+$";
+            Matcher m = Pattern.compile(regex).matcher(src);
             if (m.find()) {
                 return_value = true;
             }
@@ -409,7 +410,8 @@ public final class ValidUtil {
     public final static boolean isFloatNumeric(String src) {
         boolean return_value = false;
         if (src != null && src.length() > 0) {
-            Matcher m = Pattern.compile("^[0-9\\-\\.]+$").matcher(src);
+            final String regex = "^[0-9\\-\\.]+$";
+            Matcher m = Pattern.compile(regex).matcher(src);
             if (m.find()) {
                 return_value = true;
             }
@@ -424,8 +426,9 @@ public final class ValidUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(Object s) {
-        if (s == null || String.valueOf(s).trim().length() == 0)
+        if (s == null || String.valueOf(s).trim().length() == 0) {
             return true;
+        }
         return false;
     }
 
@@ -437,7 +440,9 @@ public final class ValidUtil {
      */
     public static boolean isAllEmpty(Object... objects) {
         for (Object o : objects) {
-            if (isNotEmpty(o)) return false;
+            if (isNotEmpty(o)) {
+                return false;
+            }
         }
         return true;
     }
@@ -450,7 +455,9 @@ public final class ValidUtil {
      */
     public static boolean isAnyEmpty(Object... objects) {
         for (Object o : objects) {
-            if (isEmpty(o)) return false;
+            if (isEmpty(o)) {
+                return false;
+            }
         }
         return true;
     }

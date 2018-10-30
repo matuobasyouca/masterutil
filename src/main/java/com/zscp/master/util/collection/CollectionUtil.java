@@ -327,7 +327,9 @@ public class CollectionUtil {
         if(array1 == null){
             return array2==null;
         }else{
-            if(array2 == null) return false;
+            if(array2 == null) {
+                return false;
+            }
         }
 
         Arrays.sort(array1);
